@@ -1,29 +1,36 @@
 import React, { useState } from "react";
+import AccordionItem from "./AccordionItem";
 
 const Accordion = ({ faqs }) => {
-  const [isOpen, setIsOpen] = useState(null);
+  const [curOpen, setCurOpen] = useState(null);
 
-  const handleToggle = (index) => {
-    setIsOpen(isOpen === index ? null : index);
-  };
   return (
     <>
-      {faqs.map((each, index) => (
-        <div
+      {faqs.map((element, index) => (
+        <AccordionItem
+          curOpen={curOpen}
+          onOpen={setCurOpen}
           key={index}
-          className={`item ${isOpen === index ? "open" : ""}`}
-          onClick={() => handleToggle(index)}
+          title={element.title}
+          num={index}
         >
-          <p className="number">0{index + 1}</p>
-          <p className="title">{each.title}</p>
-          <p className="icon">{isOpen === index ? "-" : "+"}</p>
-          {isOpen === index && (
-            <div className="content-box">
-              <p>{each.text}</p>
-            </div>
-          )}
-        </div>
+          {element.text}
+        </AccordionItem>
       ))}
+      <AccordionItem
+        curOpen={curOpen}
+        onOpen={setCurOpen}
+        title="Thinking in React"
+        num={22}
+        key="test 1"
+      >
+        <p>Allows React developers to:</p>
+        <ul>
+          <li>Break up UI into components</li>
+          <li>Make components reusuable</li>
+          <li>Place state efficiently</li>
+        </ul>
+      </AccordionItem>
     </>
   );
 };
