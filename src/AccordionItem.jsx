@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccordionItem = ({ num, title, text, curOpen, onOpen, children }) => {
+const AccordionItem = ({ num, title, curOpen, onOpen, children }) => {
   const isOpen = num === curOpen;
 
   return (

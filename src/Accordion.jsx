@@ -17,12 +17,13 @@ const Accordion = ({ faqs }) => {
           {element.text}
         </AccordionItem>
       ))}
+
       <AccordionItem
         curOpen={curOpen}
         onOpen={setCurOpen}
         title="Thinking in React"
         num={22}
-        key="test 1"
+        key="Thinking in React"
       >
         <p>Allows React developers to:</p>
         <ul>
